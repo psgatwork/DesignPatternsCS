@@ -1,4 +1,6 @@
 ﻿using System;
+using StrategyPattern.ContextHolder;
+using StrategyPattern.Strategy;
 
 namespace StrategyPattern
 {
@@ -6,7 +8,18 @@ namespace StrategyPattern
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.WriteLine("----------- Start -----------");
+
+            Context context;
+
+            context = new Context(new SingleOwnerTaxStrategy());
+            context.ContextTaxCalculate();
+
+            context = new Context(new MultipleOwnerTaxStrategy());
+            context.ContextTaxCalculate();
+
+            context = new Context(new CorporateTaxStrategy());
+            context.ContextTaxCalculate();
         }
     }
 }
